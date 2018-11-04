@@ -1,10 +1,15 @@
 {
   "name": "react-visjs-graph2d",
   "description": "React component for the vis.js graph2d module",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "aktug",
   "license": "MIT",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aktug/react-visjs-graph2d.git"
+  },
+  "homepage": "https://github.com/aktug/react-visjs-graph2d#readme",
   "main": "build/index.js",
  
   "scripts": {
