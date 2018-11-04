@@ -1,0 +1,40 @@
+{
+  "name": "react-visjs-graph2d",
+  "description": "React component for the vis.js graph2d module",
+  "version": "0.1.0",
+  "author": "aktug",
+  "license": "MIT",
+  "private": false,
+  "main": "build/index.js",
+ 
+  "scripts": {
+    "release": "node_modules/.bin/babel src --ignore *.test.js --out-dir build",
+    "precommit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "dependencies": {
+    "vis": "^4.20.1",
+    "lodash": "^4.17.11"
+  },
+  "peerDependencies": {
+    "prop-types": "^16.0",
+    "react": "^16.0",
+    "react-dom": "^16.0"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-minify": "^0.5.0",
+    "babel-preset-react": "^6.24.1",
+    "eslint": "^5.8.0",
+    "eslint-plugin-react": "^7.11.1",
+    "husky": "^1.1.3",
+    "lint-staged": "^8.0.4",
+    "prettier": "^1.14.3"
+  }
+}
