@@ -9,16 +9,18 @@ import assign from "lodash/assign"
 import noop from "lodash/noop"
 import keys from "lodash/keys"
 
+const ucFirst = str => str.charAt(0).toUpperCase() + str.slice(1)
+
 const events = [
-  "CurrentTimeTick",
-  "Click",
-  "Contextmenu",
-  "DoubleClick",
-  "Changed",
-  "Rangechange",
-  "Rangechanged",
-  "Timechange",
-  "Timechanged",
+  "currenttimetick",
+  "click",
+  "contextmenu",
+  "doubleclick",
+  "changed",
+  "rangechange",
+  "rangechanged",
+  "timechange",
+  "timechanged",
 ]
 
 const eventPropTypes = {}
@@ -26,7 +28,7 @@ const eventDefaultProps = {}
 
 each(events, event => {
   eventPropTypes[event] = PropTypes.func
-  eventDefaultProps[`on${event}`] = noop
+  eventDefaultProps[`on${ucFirst(event)}`] = noop
 })
 
 export default class VisGraph2d extends Component {
@@ -41,13 +43,10 @@ export default class VisGraph2d extends Component {
     const { container } = this.refs
 
     this.$el = new vis.Graph2d(container, undefined, this.props.options)
-    this.$el.on("rangechange", () => {
-      this.$el.redraw()
-    })
+    
+    this.$el.on("rangechange", () => this.$el.redraw())
 
-    events.forEach(event => {
-      this.$el.on(event, this.props[`on${event}`])
-    })
+    events.forEach(event => this.$el.on(event, this.props[`on${ucFirst(event)}`]))
 
     this.init()
   }
