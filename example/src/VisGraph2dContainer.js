@@ -1,11 +1,11 @@
 import React, { Component } from "react"
 import moment from "moment"
-import VisGraph2d from "react-visjs-graph2d"
-//import './build'
+//import VisGraph2d from "react-visjs-graph2d"
+import VisGraph2d from "./build"
 
 const example_one = {
   options: {
-    height: '380px'
+    height: "380px",
   },
   items: [
     { x: moment(), y: 30, group: 0 },
@@ -44,7 +44,7 @@ const example_one = {
 
 const example_two = {
   options: {
-    height: '380px'
+    height: "380px",
   },
   items: [
     { x: moment().add(-5, "days"), y: 13, group: 0 },
@@ -58,7 +58,6 @@ const example_two = {
     { x: moment().add(3, "days"), y: 11, group: 0 },
     { x: moment().add(4, "days"), y: 12, group: 0 },
     { x: moment().add(5, "days"), y: 13, group: 0 },
-    
   ],
   customTimes: {
     customTime1: moment().add(-6, "days"),
@@ -76,28 +75,22 @@ const example_two = {
 }
 
 class VisGraph2dContainer extends Component {
-  constructor(props) {
-    super(props)
-    this.ref1 = React.createRef()
-    this.ref2 = React.createRef()
-  }
+  log = e => console.log(e)
 
   render() {
     return (
       <>
-        <VisGraph2d {...example_one} ref={this.ref1} />
-        <VisGraph2d {...example_two} ref={this.ref2} />
+        <VisGraph2d
+          {...example_one}
+          onClick={e => this.log(e)}
+        />
+        <VisGraph2d
+          {...example_two}
+          onRangechange={e => this.log(e)}
+          onContextmenu={e => this.log(e)}
+        />
       </>
     )
-  }
-
-  componentDidMount() {
-    this.ref1.current.$el.on("click", props => {
-      console.info(props)
-    })
-    this.ref2.current.$el.on("click", props => {
-      console.info(props)
-    })
   }
 }
 
