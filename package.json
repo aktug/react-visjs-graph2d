@@ -1,7 +1,7 @@
 {
   "name": "react-visjs-graph2d",
-  "description": "React component for the vis.js graph2d module",
-  "version": "1.0.0",
+  "description": "React component for the Vis.js Graph2d module",
+  "version": "1.0.1",
   "author": "aktug",
   "license": "MIT",
   "private": false,
